@@ -6,8 +6,8 @@ import styled from 'styled-components'
 const Container = styled.form`
   display: flex;
   gap: 0.5rem;
-  margin: -1.5rem auto 4rem;
-  max-width: 46rem;
+  margin-bottom: 4rem;
+  margin-top: -1.5rem;
 `
 
 const Input = styled.input`

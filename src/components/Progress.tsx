@@ -4,8 +4,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
-  max-width: 46rem;
+  margin-bottom: 1.5rem;
 `
 
 const TitleCounter = styled.div`
