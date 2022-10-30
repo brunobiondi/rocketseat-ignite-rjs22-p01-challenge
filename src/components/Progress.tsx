@@ -42,7 +42,7 @@ export const Progress = () => {
       <TitleResume>
         Concluídas
         <ResultTasks>
-          {totalDoneTasks} de {totalTasks}
+          {totalDoneTasks ? `${totalDoneTasks} de ${totalTasks}` : 0}
         </ResultTasks>
       </TitleResume>
     </Container>

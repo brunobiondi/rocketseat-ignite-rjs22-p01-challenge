@@ -21,7 +21,7 @@ interface TasksStoreState {
 }
 
 const now = () => dayjs().format('YYYY-MM-DD HH:mm:ss')
-const getTaskKey = () => `task_${dayjs().format('YYYYMMDDHHmmss')}`
+const getTaskKey = () => `task_${dayjs().format('YYYYMMDDHHmmssSSS')}`
 
 export const useTasksStore = create<TasksStoreState>((set) => ({
   tasks: {},
@@ -43,8 +43,8 @@ export const useTasksStore = create<TasksStoreState>((set) => ({
       delete tasks[key]
       return {
         tasks,
-        todoKeys: state.todoKeys.filter((todoKey) => todoKey !== key),
-        doneKeys: state.doneKeys.filter((doneKey) => doneKey !== key),
+        todoKeys: state.todoKeys.filter((item) => item !== key),
+        doneKeys: state.doneKeys.filter((item) => item !== key),
       }
     }),
 
@@ -54,7 +54,7 @@ export const useTasksStore = create<TasksStoreState>((set) => ({
       tasks[key].completedAt = now()
       return {
         tasks,
-        todoKeys: state.todoKeys.filter((todoKey) => todoKey !== key),
+        todoKeys: state.todoKeys.filter((item) => item !== key),
         doneKeys: [key, ...state.doneKeys],
       }
     }),
@@ -65,8 +65,8 @@ export const useTasksStore = create<TasksStoreState>((set) => ({
       tasks[key].completedAt = null
       return {
         tasks,
-        todoKeys: [key, ...state.todoKeys].sort(),
-        doneKeys: state.doneKeys.filter((doneKey) => doneKey !== key),
+        todoKeys: [key, ...state.todoKeys].sort().reverse(),
+        doneKeys: state.doneKeys.filter((item) => item !== key),
       }
     }),
 }))
